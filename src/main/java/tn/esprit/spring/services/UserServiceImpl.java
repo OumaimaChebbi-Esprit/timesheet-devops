@@ -35,7 +35,7 @@ public class UserServiceImpl implements IUserService {
 		try {
 			// TODO Log à ajouter en début de la méthode 
 			utilisateur = userRepository.save(u); 
-			// TODO Log à ajouter à la fin de la méthode 
+			// TODO Log à ajouter à la fin de la méthode ///
 
 		} catch (Exception e) {
 			// TODO log ici : l....("error in addUser() : " + e);
