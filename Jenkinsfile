@@ -36,6 +36,11 @@ pipeline {
                 sh 'mvn deploy'
             }
         }
+        stage('DOCKER IMAGES') {
+             steps {
+                sh 'docker build -t timesheetimage:v${BUILD_NUMBER} -f Dockerfile ./'
+            }
+        }
         // stage ('dockerhub') {
            // steps {
               //  sh "docker login -u oumaimaadmin -p docker123"
