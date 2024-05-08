@@ -31,6 +31,11 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage ('NEXUS') {
+            steps {
+                sh 'mvn deploy'
+            }
+        }
         // stage ('dockerhub') {
            // steps {
               //  sh "docker login -u oumaimaadmin -p docker123"
