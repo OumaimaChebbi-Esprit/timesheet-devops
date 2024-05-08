@@ -44,8 +44,8 @@ pipeline {
          stage ('DOCKERHUB') {
             steps {
                sh "docker login -u oumaimaadmin -p docker123"
-               sh "docker tag timesheet:v${BUILD_NUMBER} oumaimaadmin/timesheetimage:timesheet"
-               sh "docker push oumaimaadmin/timesheetimage:timesheet"
+               sh "docker tag timesheetimage:v${BUILD_NUMBER} oumaimaadmin/timesheetimage:timesheetimage"
+               sh "docker push oumaimaadmin/timesheetimage:timesheetimage"
             }
         }
     }
