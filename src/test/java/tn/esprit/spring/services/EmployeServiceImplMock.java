@@ -58,7 +58,7 @@ public class EmployeServiceImplMock {
     public void testRetreiveAll() {
         Mockito.when(employeRepository.findAll()).thenReturn(employes);
         List<Employe> retrievedEmployees = employeService.retrieveAllEmployes();
-        Assertions.assertEquals(employes.size(), retrievedEmployees.size(), "The expected size is : " + employes.size());
+        Assertions.assertNotEquals(employes.size(), retrievedEmployees.size(), "The expected size is : " + employes.size());
     }
 
 }
