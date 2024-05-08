@@ -15,6 +15,7 @@ import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.EmployeRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,4 +46,19 @@ public class EmployeServiceImplMock {
         Employe employe1 = employeService.retrieveEmploye("2");
         Assertions.assertNotNull(employe1);
     }
+
+    @Test
+    public void testAddEmploye() {
+        Mockito.when(employeRepository.save(Mockito.any(Employe.class))).thenReturn(employe);
+        Employe addedEmploye =  employeService.addEmploye(employe);
+        Assertions.assertNotNull(addedEmploye, "The added employee should not be null !");
+    }
+
+    @Test
+    public void testRetreiveAll() {
+        Mockito.when(employeRepository.findAll()).thenReturn(employes);
+        List<Employe> retrievedEmployees = employeService.retrieveAllEmployes();
+        Assertions.assertEquals(employes.size(), retrievedEmployees.size(), "The expected size is : " + employes.size());
+    }
+
 }
