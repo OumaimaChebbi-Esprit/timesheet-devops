@@ -37,16 +37,21 @@ pipeline {
             }
         }
         stage('DOCKER IMAGES') {
-             steps {
+            steps {
                 sh 'docker build -t timesheetimage:v${BUILD_NUMBER} -f Dockerfile ./'
             }
         }
-         stage ('DOCKERHUB') {
-            steps {
-               sh "docker login -u oumaimaadmin -p docker123"
-               sh "docker tag timesheetimage:v${BUILD_NUMBER} oumaimaadmin/timesheetimage:timesheetimage"
-               sh "docker push oumaimaadmin/timesheetimage:timesheetimage"
-            }
-        }
+        stage ('DOCKER HUB') {
+           steps {
+               sh 'docker login -u oumaimaadmin -p docker123'
+               sh 'docker tag timesheetimage:v${BUILD_NUMBER} oumaimaadmin/timesheetimage:timesheetimage'
+               sh 'docker push oumaimaadmin/timesheetimage:timesheetimage'
+           }
+       }
+       stage ('DOCKER COMPOSE') {
+          steps {
+               sh 'docker compose up'
+          }
+       }
     }
 }
