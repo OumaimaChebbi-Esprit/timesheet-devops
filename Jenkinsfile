@@ -23,7 +23,7 @@ pipeline {
         stage ('SONAR QUBE') {
             steps {
                 echo 'Sonar Qube'
-                // sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
             }
         }
         stage ('JUNIT & MOCKITO') {
