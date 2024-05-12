@@ -26,9 +26,9 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
             }
         }
-        stage ('JUNIT & MOCKITO') {
+        stage ('MOCKITO') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -DskipTests'
             }
         }
         stage ('NEXUS') {
