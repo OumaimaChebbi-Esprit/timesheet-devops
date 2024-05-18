@@ -23,12 +23,12 @@ pipeline {
         stage ('SONAR QUBE') {
             steps {
                 echo 'Sonar Qube'
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar';
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -Dmaven.test.skip=true';
             }
         }
         stage ('MOCKITO') {
             steps {
-                sh 'mvn test -DskipTests'
+                sh 'mvn test'
             }
         }
         stage ('NEXUS') {
